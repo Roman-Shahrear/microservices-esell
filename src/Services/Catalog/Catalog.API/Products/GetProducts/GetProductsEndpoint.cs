@@ -1,7 +1,7 @@
 ﻿
 namespace Catalog.API.Products.GetProducts
 {
-    // public record GetProductsRequst()
+    // public record GetProductsRequest();
     public record GetProductsResponse(IEnumerable<Product> Products);
     public class GetProductsEndpoint : ICarterModule
     {

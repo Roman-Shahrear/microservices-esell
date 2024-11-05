@@ -1,7 +1,7 @@
 ﻿namespace Catalog.API.Products.CreateProduct
 {
     // Command for product creation (DTO)
-    public record CreateProductRequest(string Name, List<string> Category, string Description, string ImageFile, decimal price);
+    public record CreateProductRequest(string Name, List<string> Category, string Description, string ImageFile, decimal Price);
 
     // Result after product creation (DTO)
     public record CreateProductResponse(Guid Id);

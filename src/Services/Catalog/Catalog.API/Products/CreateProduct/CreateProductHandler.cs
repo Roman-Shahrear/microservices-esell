@@ -1,7 +1,7 @@
 ﻿namespace Catalog.API.Products.CreateProduct
 {
     // Command for product creation (DTO)
-    public record CreateProductCommand(string Name, List<string> Category, string Description, string ImageFile, decimal price)
+    public record CreateProductCommand(string Name, List<string> Category, string Description, string ImageFile, decimal Price)
         : ICommand<CreateProductResult>;
 
     // Result after product creation (DTO)
@@ -19,8 +19,9 @@
                Category = command.Category,
                Description = command.Description,
                ImageFile = command.ImageFile,
-               price = command.price
-           };
+               Price = command.Price
+
+            };
 
             // save database
             session.Store(product);
