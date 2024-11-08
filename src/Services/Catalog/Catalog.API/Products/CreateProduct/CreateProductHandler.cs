@@ -17,13 +17,11 @@
             RuleFor(x => x.Price).NotEmpty().WithMessage("Price must be greater then 0");
         }
     }
-    internal class CreateProductCommandHandler
-        (IDocumentSession session, ILogger<CreateProductCommandHandler> logger) 
+    internal class CreateProductCommandHandler(IDocumentSession session) 
         : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            logger.LogInformation("CreateProductHandler.Handle called with {@Command}", command);
             // create product entity from command object
             var product = new Product
             {
@@ -38,7 +36,6 @@
             // save database
             session.Store(product);
             await session.SaveChangesAsync(cancellationToken);
-            logger.LogInformation("Product {ProductName} created successfully with ID: {ProductId}", product.Name, product.Id);
             // return result
             return new CreateProductResult(product.Id);
         }
