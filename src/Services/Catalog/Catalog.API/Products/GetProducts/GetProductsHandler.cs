@@ -1,7 +1,10 @@
 ﻿
 namespace Catalog.API.Products.GetProducts
 {
+    // public record GetProductsQuery();
     public record GetProductsQuery() : IQuery<GetProductsResult>;
+
+    // after result get products (DTO)
     public record GetProductsResult(IEnumerable<Product> Products);
     internal class GetProductsQueryHandler
         (IDocumentSession session, ILogger<GetProductsQueryHandler> logger)

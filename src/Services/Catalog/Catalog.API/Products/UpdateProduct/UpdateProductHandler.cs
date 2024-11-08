@@ -1,9 +1,23 @@
 ﻿
 namespace Catalog.API.Products.UpdateProduct
 {
+    // command product updateing (DTO)
     public record UpdateProductCommand(Guid Id, string Name, List<string> Category, string Description, string ImageFile, decimal Price)
         : ICommand<UpdateProductResult>;
     public record UpdateProductResult(bool IsSuccess);
+
+    public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
+    {
+        public UpdateProductCommandValidator()
+        {
+            RuleFor(command => command.Id).NotEmpty().WithName("Product Id is required");
+            RuleFor(command => command.Name)
+                .NotEmpty().WithMessage("Name is required")
+                .Length(2, 150).WithMessage("Name must be 2 and 150 characters");
+            RuleFor(command => command.Price)
+                .GreaterThan(0).WithMessage("Price must be greater than 0");
+        }
+    }
     internal class UpdateProductCommandHandler
         (IDocumentSession session, ILogger<UpdateProductCommandHandler> logger)
         : ICommandHandler<UpdateProductCommand, UpdateProductResult>

@@ -1,9 +1,9 @@
 ﻿namespace Catalog.API.Products.CreateProduct
 {
-    // Command for product creation (DTO)
+    // command for product creation (DTO)
     public record CreateProductRequest(string Name, List<string> Category, string Description, string ImageFile, decimal Price);
 
-    // Result after product creation (DTO)
+    // result after product creation (DTO)
     public record CreateProductResponse(Guid Id);
     public class CreateProductEndpoint : ICarterModule
     {
