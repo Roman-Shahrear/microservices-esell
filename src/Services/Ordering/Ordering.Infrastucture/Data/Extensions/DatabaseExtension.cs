@@ -25,9 +25,9 @@ namespace Ordering.Infrastructure.Data.Extensions
 
         private static async Task SeedCustomerAsync(ApplicationDbContext context)
         {
-            if(!await context.Customer.AnyAsync())
+            if(!await context.Customers.AnyAsync())
             {
-                await context.Customer.AddRangeAsync(InitialData.Customers);
+                await context.Customers.AddRangeAsync(InitialData.Customers);
                 await context.SaveChangesAsync();
             }
         }
