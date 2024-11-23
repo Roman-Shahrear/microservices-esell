@@ -27,8 +27,9 @@ namespace Basket.API.Basket.CheckoutBasket
             // Set totalprice on basketcheckout event message
             // send basket checkout event to rabbitmq using masstransit
             // delete the basket
-            
+
             var basket = await repository.GetBasket(command.BasketCheckoutDto.UserName, cancellationToken);
+
             if (basket == null)
             {
                 return new CheckoutBasketResult(false);
