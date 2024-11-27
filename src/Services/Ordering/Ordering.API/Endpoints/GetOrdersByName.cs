@@ -1,6 +1,5 @@
 ﻿
 using Ordering.Application.Orders.Queries.GetOrdersByName;
-using Ordering.Domain.ValueObjects;
 
 namespace Ordering.API.Endpoints
 {

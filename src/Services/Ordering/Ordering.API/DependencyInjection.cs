@@ -23,12 +23,12 @@ namespace Ordering.API
             app.MapCarter();
 
             app.UseExceptionHandler(options => { });
-            
+
             app.UseHealthChecks("/health",
-                    new HealthCheckOptions
-                    {
-                        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                    });
+                new HealthCheckOptions
+                {
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
 
             return app;
         }
