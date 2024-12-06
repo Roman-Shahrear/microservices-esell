@@ -1,4 +1,4 @@
-﻿namespace Shopping.Web.Service
+﻿namespace Shopping.Web.Services
 {
     public interface ICatalogService
     {
